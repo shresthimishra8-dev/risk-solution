@@ -42,7 +42,7 @@
 
 <script>
 // IMPORTANT: Replace <<SCRIPT_URL>> with your Apps Script Web App URL after deployment
-const SCRIPT_URL = '<<SCRIPT_URL>>'; 
+const SCRIPT_URL = '<<SCRIPT_URL>>';
 const WA_LINK = 'https://wa.me/919369079665?text=Hello%20I%20applied%20for%20loan%20via%20Risk%20Solution';
 
 function showMessage(html) {
@@ -71,6 +71,8 @@ document.getElementById('leadForm').addEventListener('submit', async function(e)
     if (j.status === 'ok') {
       showMessage('Thanks! हमारी टीम जल्दी contact करेगी.<br><a href="' + WA_LINK + '" target="_blank">WhatsApp पर बात करें</a>');
       form.reset();
+    } else if (j.status === 'ignored_spam') {
+      showMessage('Submission ignored (spam suspected).');
     } else {
       showMessage('Kuch gadbad hui, try karo dobara.');
     }
